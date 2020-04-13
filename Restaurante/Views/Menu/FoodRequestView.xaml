@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Restaurante.Views.Menu.FoodRequestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModel="clr-namespace:Restaurante.ViewModel"
+             xmlns:local="clr-namespace:Restaurante.Views.Menu"
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="960">
+    <Grid >
+        
+        <Border Margin="197,13,197,13" Opacity="0.3" BorderBrush="Black" BorderThickness="2">
+        </Border>
+        <Image Source="/Assets/banner.png" DockPanel.Dock="Top" Margin="6,5,0,210" Height="200" Width="500"/>
+
+        <Label Height="30" Width="105" Margin="0,30,250,0" FontFamily="Open Sans" FontSize="12" Foreground="Gray"> Seleção da mesa</Label>
+        <ComboBox  x:Name="mesaCombo" SelectedIndex="0" Height="30" Width="100" Margin="0,100,250,0" ItemsSource="{Binding Model.ListaMesas}"></ComboBox>
+
+        <Label Height="30" Width="105" Margin="250,30,0,0" FontFamily="Open Sans" FontSize="12" Foreground="Gray">Seleção do prato</Label>
+        <ComboBox x:Name="pratoCombo" Height="30" Width="100" Margin="250,100,0,0" SelectedIndex="0" ItemsSource="{Binding Model.ListaPratos}" DisplayMemberPath="Nome"></ComboBox>
+
+        <Label Height="30" Width="115" Margin="0,180,250,0" FontFamily="Open Sans" FontSize="12" Foreground="Gray">Seleção do garçon</Label>
+        <ComboBox x:Name="garconCombo" Height="30" Width="100" Margin="0,250,250,0" SelectedIndex="0" ItemsSource="{Binding Model.ListaGarcons}" DisplayMemberPath="Nome"></ComboBox>
+
+        <Label Height="30" Width="105" Margin="275,180,0,0" FontFamily="Open Sans" FontSize="12" Foreground="Gray">Quantidade</Label>
+        <TextBox Height="30" Width="100" Margin="250,250,0,0"  Name="textBoxValue" PreviewTextInput="textBoxValue_PreviewTextInput" DataObject.Pasting="textBoxValue_Pasting"/>
+
+        <Button 
+            Width="100"
+            Height="30" 
+            Margin="3,330,0,0"
+            Content="realizar pedido"
+            Style="{StaticResource AccentedSquareButtonStyle}"
+            Command="{Binding FoodRequest}">
+            <Button.Resources>
+                <viewModel:MultiConverter x:Key="multiConverter" />
+            </Button.Resources>
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiConverter}">
+                    <Binding Path="SelectedIndex" ElementName="mesaCombo"/>
+                    <Binding Path="SelectedIndex" ElementName="pratoCombo"/>
+                    <Binding Path="SelectedIndex" ElementName="garconCombo"/>
+                    <Binding Path="Text" ElementName="textBoxValue"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+    </Grid>
+</UserControl>

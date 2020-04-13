@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Restaurante.Views.Menu.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Restaurante.Views.Menu"
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="960">
+
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="TransparentBlue" Color="#ff7675" Opacity="0.3" />
+    </UserControl.Resources>
+
+    <Grid >
+        <Border Margin="197,13,197,13" Opacity="0.3" BorderBrush="Black" BorderThickness="2">
+        </Border>
+        <Image Source="/Assets/banner.png" DockPanel.Dock="Top" Margin="6,5,0,210" Height="200" Width="500"/>
+
+        <GroupBox Margin="0,0,0,0">
+            
+            <DataGrid ItemsSource="{Binding Model.Items}" Margin="200,204,200,33"
+                      IsReadOnly="True"
+                      RowHeight="20"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Center"
+                      AutoGenerateColumns="True"
+                      Style="{StaticResource AzureDataGrid}" Height="174">
+            </DataGrid>
+        </GroupBox>
+    </Grid>
+</UserControl>

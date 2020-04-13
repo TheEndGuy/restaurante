@@ -1,0 +1,34 @@
+﻿using Restaurante.ViewModel.Menu;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Restaurante.Views.Menu
+{
+    /// <summary>
+    /// Interação lógica para HomeView.xam
+    /// </summary>
+    public partial class HomeView : UserControl
+    {
+        public HomeView()
+        {
+            InitializeComponent();
+
+            DataContextChanged += (sender, args) =>
+            {
+                (this.DataContext as HomeViewModel).Model.ReloadItems();
+            };
+        }
+    }
+}
