@@ -10,5 +10,5 @@ Configurações:
 
 Forma de uso:
 - Criação da database que foi configurada no arquivo de configurações.
-- Execução do arquivo 'Script.sql.
+- Execução do arquivo 'Script.sql'.
 - Execução normal do programa.
