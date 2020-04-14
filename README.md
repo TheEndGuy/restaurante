@@ -1,5 +1,5 @@
 # Restaurante
-Projeto criado para um trabalho da faculdade na disciplina de Banco de Dados com a utilização de Procedures.
+Projeto referente a um restaurante, criado para um trabalho da faculdade na disciplina de Banco de Dados com a utilização de Procedures.
 
 Observações:
 - Não utiliza nenhum ORM.
